@@ -14,7 +14,6 @@ class Sniper(discord.Client):
     def __init__(self, **options):
         super().__init__(**options)
         self.token = ""
-        # self.proxy_list = []
 
     def client_headers(self):
         """Simply the headers needed to perform the requests"""
