@@ -80,21 +80,21 @@ class Sniper(discord.Client):
             return {'valid': False, 'message': message}
         else:
             return {'valid': True, 'message': r.json()}
-
+              
     async def on_message(self, message):
         try:
-            code = re.search(r'(discord.com/gifts/|discordapp.com/gifts/|discord.gift/)([a-zA-Z0-9]+)', message.content)
+            code = re.search(r'(discord.com/gifts/|discordapp.com/gifts/|discord.gift/)([a-zA-Z0-9]+)',
+                             message.content)
             nitro_code = code.group(2)
-            if message.author == self.user:
-                pass
             if code:
                 if len(nitro_code) == 16 or len(nitro_code) == 24:
                     data = await self.claim_code(code.group(2))
                     data_message = data['message']
                     if 'nitro' in data:
-                        print(f"{Fore.MAGENTA}{datetime.datetime.now().strftime('%H:%M:%S %p')}{Fore.RESET} ({Fore.GREEN}Nitro {data_message}{Fore.RESET}) - ({Fore.CYAN}{message.guild.name}{Fore.RESET}) - ({Fore.CYAN}{message.author.name}#{message.author.discriminator}{Fore.RESET}) - ({nitro_code})")
+                        print(f"{Fore.MAGENTA}{datetime.datetime.now().strftime('%H:%M:%S %p')}{Fore.RESET} ({Fore.GREEN}Nitro Claimed{Fore.RESET}) - ({Fore.CYAN}{message.guild}{Fore.RESET}) - ({Fore.CYAN}{message.author.name}#{message.author.discriminator}{Fore.RESET}) - ({nitro_code})")
                     else:
-                        print(f"{Fore.MAGENTA}{datetime.datetime.now().strftime('%H:%M:%S %p')}{Fore.RESET} ({Fore.RED}Nitro {data_message}{Fore.RESET}) - ({Fore.CYAN}{message.guild.name}{Fore.RESET}) - ({Fore.CYAN}{message.author.name}#{message.author.discriminator}{Fore.RESET}) - ({nitro_code})")
+                        print(f"{Fore.MAGENTA}{datetime.datetime.now().strftime('%H:%M:%S %p')}{Fore.RESET} ({Fore.RED}Nitro {data_message}{Fore.RESET}) - ({Fore.CYAN}{message.guild}{Fore.RESET}) - ({Fore.CYAN}{message.author.name}#{message.author.discriminator}{Fore.RESET}) - ({nitro_code})")
+
         except AttributeError:
             pass
 
