@@ -14,7 +14,7 @@ class Sniper(discord.Client):
     def __init__(self, **options):
         super().__init__(**options)
         self.token = ""
-        self.proxy_list = []
+        # self.proxy_list = []
 
     def client_headers(self):
         """Simply the headers needed to perform the requests"""
@@ -37,12 +37,6 @@ class Sniper(discord.Client):
             if elem in text:
                 text = text.replace(elem, f'{Fore.MAGENTA}{elem}{Fore.RESET}')
         return text
-
-    def load_proxies(self, filename: str):
-        with open(filename) as f:
-            proxy = f.read().split('\n')
-            for proxies in proxy:
-                self.proxy_list.append(proxies)
 
     def start_menu(self):
         banner = self.replace_multiple("""
