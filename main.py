@@ -89,13 +89,12 @@ class Sniper(discord.Client):
                 pass
             if code:
                 if len(nitro_code) == 16 or len(nitro_code) == 24:
-                        data = await self.claim_code(code.group(2))
-                        data_message = data['message']
-                        if 'subscription_plan' not in data_message:
-                            print(f"{Fore.MAGENTA}{datetime.datetime.now().strftime('%H:%M:%S %p')}{Fore.RESET} ({Fore.RED}Nitro {data_message}{Fore.RESET}) - ({Fore.CYAN}{message.guild.name}{Fore.RESET}) - ({Fore.CYAN}{message.author.name}#{message.author.discriminator}{Fore.RESET}) - ({nitro_code})")
-                        else:
-                            print(f"{Fore.MAGENTA}{datetime.datetime.now().strftime('%H:%M:%S %p')}{Fore.RESET} ({Fore.GREEN}Nitro {data_message}{Fore.RESET}) - ({Fore.CYAN}{message.guild.name}{Fore.RESET}) - ({Fore.CYAN}{message.author.name}#{message.author.discriminator}{Fore.RESET}) - ({nitro_code})")
-
+                    data = await self.claim_code(code.group(2))
+                    data_message = data['message']
+                    if 'nitro' in data:
+                        print(f"{Fore.MAGENTA}{datetime.datetime.now().strftime('%H:%M:%S %p')}{Fore.RESET} ({Fore.GREEN}Nitro {data_message}{Fore.RESET}) - ({Fore.CYAN}{message.guild.name}{Fore.RESET}) - ({Fore.CYAN}{message.author.name}#{message.author.discriminator}{Fore.RESET}) - ({nitro_code})")
+                    else:
+                        print(f"{Fore.MAGENTA}{datetime.datetime.now().strftime('%H:%M:%S %p')}{Fore.RESET} ({Fore.RED}Nitro {data_message}{Fore.RESET}) - ({Fore.CYAN}{message.guild.name}{Fore.RESET}) - ({Fore.CYAN}{message.author.name}#{message.author.discriminator}{Fore.RESET}) - ({nitro_code})")
         except AttributeError:
             pass
 
