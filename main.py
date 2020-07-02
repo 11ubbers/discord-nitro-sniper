@@ -75,7 +75,7 @@ class Sniper(discord.Client):
         if 'subscription_plan' not in r.text:
             try:
                 message = r.json()['message']
-            except (AttributeError, IndexError):
+            except (AttributeError, IndexError, KeyError):
                 message = "cloudflare"
             return {'valid': False, 'message': message}
         else:
