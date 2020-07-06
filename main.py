@@ -88,7 +88,7 @@ class Sniper(discord.Client):
             nitro_code = code.group(2)
             if code:
                 if len(nitro_code) == 16 or len(nitro_code) == 24:
-                    data = await self.claim_code(code.group(2))
+                    data = await self.claim_code(nitro_code)
                     data_message = data['message']
                     if 'subscription_plan' in data_message:
                         print(f"{Fore.MAGENTA}{datetime.datetime.now().strftime('%H:%M:%S %p')}{Fore.RESET} ({Fore.GREEN}Nitro Claimed{Fore.RESET}) - ({Fore.CYAN}{message.guild}{Fore.RESET}) - ({Fore.CYAN}{message.author.name}#{message.author.discriminator}{Fore.RESET}) - ({nitro_code})")
